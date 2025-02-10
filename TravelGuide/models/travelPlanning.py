@@ -1,6 +1,7 @@
 
-from imports import *
+# from imports import *
 
+import ollama
 
 client = ollama.Client()
 
@@ -8,18 +9,12 @@ client = ollama.Client()
 user_input = None
 place_visit = None
 
-model = "travelPlanner"
+model = "travelPlanner:latest"
 
 
 prompt = f"""
-
-You are a financial consultant
-User asks: {user_input}
-How shall the user be advised to plan their visit to {place_visit}?
-
+plan me a trip to LA for 5 days
 """
 
 response = client.generate(model=model, prompt=prompt)  
-
-response = client.generate(model=model, prompt=prompt)
-(response.response)
+print(response.response)
